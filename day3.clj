@@ -26,3 +26,15 @@
   (let [commons (map common input)
         priorities (map #(priority (first %)) commons)]
     (reduce + priorities)))
+
+(def input2
+  (partition 3 (map clojure.string/join input)))
+
+(defn common2 [group]
+  (let [gas (map set group)]
+    (first (apply clojure.set/intersection gas))))
+
+(defn solution2 [input]
+  (let [commons (map common2 input)
+        priorities (map #(priority %) commons)]
+    (apply + priorities)))
